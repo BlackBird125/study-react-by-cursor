@@ -30,7 +30,7 @@ const TodoList: React.FC = () => {
       completed: false,
     };
 
-    setTodos([...todos, newTodo]);
+    setTodos([newTodo, ...todos]);
     setInputText("");
   };
 
@@ -46,6 +46,13 @@ const TodoList: React.FC = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const sortedTodos = [...todos].sort((a, b) => {
+    if (a.completed === b.completed) {
+      return b.id - a.id;
+    }
+    return a.completed ? 1 : -1;
+  });
+
   return (
     <Card title="Todoリスト" className="todo-container">
       <form onSubmit={handleSubmit} className="todo-form">
@@ -55,12 +62,15 @@ const TodoList: React.FC = () => {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="新しいタスクを入力..."
+          required
         />
-        <Button type="submit">追加</Button>
+        <Button type="submit" size="medium">
+          追加
+        </Button>
       </form>
 
       <ul className="todo-list">
-        {todos.map((todo) => (
+        {sortedTodos.map((todo) => (
           <li key={todo.id} className="todo-item">
             <label className="todo-label">
               <input
