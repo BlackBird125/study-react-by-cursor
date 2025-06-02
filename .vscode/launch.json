@@ -2,14 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Chrome",
-      "request": "launch",
+      "name": "Debug React",
       "type": "chrome",
+      "request": "launch",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/src",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": "${workspaceFolder}/.vscode/chrome-debug-profile",
       "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*"
-      }
+        "webpack:///src/*": "${webRoot}/src/*"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "trace": true
     }
   ]
 }
