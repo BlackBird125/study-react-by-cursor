@@ -1,18 +1,9 @@
 import React from "react";
-import TodoList from "./features/todo/TodoList";
-import NoteList from "./features/notes/NoteList";
+import HomePage from "./pages/HomePage/HomePage";
 import "./styles/variables.css";
-import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <div className="app-container">
-        <TodoList />
-        <NoteList />
-      </div>
-    </div>
-  );
+  return <HomePage />;
 }
 
 export default App;
